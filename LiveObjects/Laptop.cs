@@ -67,18 +67,6 @@ namespace Game.Scripts.LiveObjects
 
         private void Update()
         {
-            if (_hacked == true)
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-
-                }
-
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-
-                }
-            }
         }
 
         void ResetCameras()

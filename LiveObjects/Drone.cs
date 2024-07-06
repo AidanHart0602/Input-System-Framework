@@ -33,7 +33,14 @@ namespace Game.Scripts.LiveObjects
         private void Start()
         {
             _input = new PlayerInputs();
-            _input.Drone.Enable();
+            _input.Drone.Escape.performed += Escape_performed;
+        }
+
+        private void Escape_performed(InputAction.CallbackContext obj)
+        {
+            _inFlightMode = false;
+            onExitFlightmode?.Invoke();
+            ExitFlightMode();
         }
 
         private void OnEnable()
@@ -45,6 +52,7 @@ namespace Game.Scripts.LiveObjects
         {
             if (_inFlightMode != true && zone.GetZoneID() == 4) // drone Scene
             {
+                _input.Drone.Enable();
                 _propAnim.SetTrigger("StartProps");
                 _droneCam.Priority = 11;
                 _inFlightMode = true;
@@ -58,7 +66,8 @@ namespace Game.Scripts.LiveObjects
         {            
             _droneCam.Priority = 9;
             _inFlightMode = false;
-            UIManager.Instance.DroneView(false);            
+            UIManager.Instance.DroneView(false);
+
         }
 
         private void Update()
@@ -67,13 +76,6 @@ namespace Game.Scripts.LiveObjects
             {
                 CalculateTilt();
                 CalculateMovementUpdate();
-
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    _inFlightMode = false;
-                    onExitFlightmode?.Invoke();
-                    ExitFlightMode();
-                }
             }
         }
 
@@ -106,6 +108,7 @@ namespace Game.Scripts.LiveObjects
             var _movement = _input.Drone.Movement.ReadValue<Vector3>();
             if (_movement == Vector3.up)
             {
+                Debug.Log("Going Up");
                 _rigidbody.AddForce(transform.up * _speed, ForceMode.Acceleration);
             }
             if (_movement == Vector3.down)

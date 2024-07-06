@@ -107,7 +107,6 @@ namespace Game.Scripts.LiveObjects
                             UIManager.Instance.DisplayInteractableZoneMessage(false);
                         }
                         break;
-
                 }
             }
         }
