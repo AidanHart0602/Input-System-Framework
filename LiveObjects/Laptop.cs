@@ -48,7 +48,7 @@ namespace Game.Scripts.LiveObjects
                 _cameras[previous].Priority = 9;
             }
         }
-
+        
         private void Escape_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {
             if(_hacked == true)

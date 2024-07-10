@@ -26,7 +26,7 @@ namespace Game.Scripts.LiveObjects
         [SerializeField]
         private ZoneType _zoneType;
         [SerializeField]
-        private int _zoneID;
+        public int _zoneID;
         [SerializeField]
         private int _requiredID;
         [SerializeField]
@@ -57,7 +57,7 @@ namespace Game.Scripts.LiveObjects
             }
             set
             {
-                _currentZoneID = value;       
+                _currentZoneID = value;        
             }
         }
 
@@ -70,6 +70,7 @@ namespace Game.Scripts.LiveObjects
         {
             _input = new PlayerInputs();
             _input.InteractionZone.Enable();
+
             _input.InteractionZone.Interact.started += Interact_started;
             _input.InteractionZone.Interact.performed += Interact_performed;
             _input.InteractionZone.Interact.canceled += Interact_canceled;
@@ -186,6 +187,11 @@ namespace Game.Scripts.LiveObjects
 
         }
        
+        private void AnnihilateCrate()
+        {
+
+        }
+
         private void CollectItems()
         {
             foreach (var item in _zoneItems)
