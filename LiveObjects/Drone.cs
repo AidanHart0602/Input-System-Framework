@@ -137,7 +137,7 @@ namespace Game.Scripts.LiveObjects
                 default:
                     transform.rotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0);
                     break;
-            }  
+            }
         }
 
         private void OnDisable()
