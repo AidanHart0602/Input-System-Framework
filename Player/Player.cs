@@ -63,7 +63,6 @@ namespace Game.Scripts.Player
         {
             _playerGrounded = _controller.isGrounded;
             var _movement = _input.Player.Walking.ReadValue<Vector2>();
-
             transform.Rotate(transform.up, _movement.x);
 
             var direction = transform.forward * _movement.y;

@@ -187,11 +187,6 @@ namespace Game.Scripts.LiveObjects
 
         }
        
-        private void AnnihilateCrate()
-        {
-
-        }
-
         private void CollectItems()
         {
             foreach (var item in _zoneItems)
